@@ -1,7 +1,67 @@
-import React, { useState } from 'react';
-import { FaMicrophone, FaEye, FaHandPaper, FaDesktop, FaPlay, FaChevronDown, FaChevronUp, FaQuestionCircle } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaMicrophone, FaEye, FaHandPaper, FaDesktop, FaPlay, FaChevronDown, FaChevronUp, FaQuestionCircle, FaRocket, FaStar, FaArrowRight } from 'react-icons/fa';
+
+// Add custom animations
+const styles = `
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .interface-card {
+    transition: all 0.3s ease;
+  }
+
+  .interface-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+`;
 
 const InterfacePage = () => {
+  // Inject custom styles
+  useEffect(() => {
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => document.head.removeChild(styleSheet);
+  }, []);
   const [activeMode, setActiveMode] = useState(null);
   const [expandedFaq, setExpandedFaq] = useState(null);
 
@@ -12,6 +72,7 @@ const InterfacePage = () => {
       icon: FaMicrophone,
       color: 'from-blue-400 to-blue-600',
       bgColor: 'bg-blue-50',
+      image: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       features: ['Voice commands', 'Speech recognition', 'Audio feedback']
     },
     {
@@ -20,6 +81,7 @@ const InterfacePage = () => {
       icon: FaEye,
       color: 'from-green-400 to-green-600',
       bgColor: 'bg-green-50',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       features: ['High contrast', 'Large text', 'Color adjustments']
     },
     {
@@ -28,6 +90,7 @@ const InterfacePage = () => {
       icon: FaHandPaper,
       color: 'from-purple-400 to-purple-600',
       bgColor: 'bg-purple-50',
+      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       features: ['ASL recognition', 'Real-time translation', 'Gesture controls']
     },
     {
@@ -36,6 +99,7 @@ const InterfacePage = () => {
       icon: FaDesktop,
       color: 'from-orange-400 to-orange-600',
       bgColor: 'bg-orange-50',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       features: ['Simplified layout', 'Essential features', 'Clear navigation']
     }
   ];
@@ -63,17 +127,20 @@ const InterfacePage = () => {
     {
       name: 'Sarah J.',
       text: 'The vocal interface has completely changed how I interact with technology. It\'s incredibly responsive and accurate.',
-      rating: 5
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80'
     },
     {
       name: 'Mike R.',
       text: 'Visual adaptations make everything so much clearer. The high contrast mode is perfect for my needs.',
-      rating: 5
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80'
     },
     {
       name: 'Alex K.',
       text: 'Outstanding sign language support. Real-time translation works flawlessly and has improved my communication significantly.',
-      rating: 5
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80'
     }
   ];
 
@@ -81,7 +148,28 @@ const InterfacePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/80 to-blue-600/80"></div>
+
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full flex items-center justify-center animate-float">
+            <FaRocket className="text-2xl text-white" />
+          </div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-white bg-opacity-10 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: '0.5s' }}>
+            <FaStar className="text-xl text-white" />
+          </div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center animate-float" style={{ animationDelay: '1s' }}>
+            <FaArrowRight className="text-lg text-white" />
+          </div>
+        </div>
+
         <div className="relative max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
             Tailored Access, Just For You
@@ -114,34 +202,45 @@ const InterfacePage = () => {
               return (
                 <div
                   key={index}
-                  className={`${mode.bgColor} rounded-2xl p-8 interface-card transition-all duration-500 cursor-pointer group animate-fadeInUp`}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden interface-card transition-all duration-500 cursor-pointer group animate-fadeInUp hover:shadow-xl transform hover:-translate-y-2"
                   style={{ animationDelay: `${index * 0.2}s` }}
                   onMouseEnter={() => setActiveMode(index)}
                   onMouseLeave={() => setActiveMode(null)}
                 >
-                  <div className="flex items-start space-x-6">
-                    <div className={`w-20 h-20 bg-gradient-to-r ${mode.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 animate-float`}>
-                      <Icon className="w-10 h-10 text-white" />
+                  {/* Image Section */}
+                  <div className="h-48 relative overflow-hidden">
+                    <img
+                      src={mode.image}
+                      alt={mode.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <div className={`w-16 h-16 bg-gradient-to-r ${mode.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                        {mode.title}
-                      </h3>
-                      <p className="text-gray-700 mb-4 leading-relaxed">
-                        {mode.description}
-                      </p>
-                      <ul className="space-y-2 mb-6">
-                        {mode.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-gray-600">
-                            <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <button className={`bg-gradient-to-r ${mode.color} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105`}>
-                        Try This Mode
-                      </button>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                      {mode.title}
+                    </h3>
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      {mode.description}
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {mode.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-gray-600">
+                          <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <button className={`w-full bg-gradient-to-r ${mode.color} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105`}>
+                      Try This Mode
+                    </button>
                   </div>
                 </div>
               );
@@ -232,9 +331,11 @@ const InterfacePage = () => {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {testimonial.name.charAt(0)}
-                  </div>
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-purple-200"
+                  />
                   <div className="ml-4">
                     <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                     <div className="flex text-yellow-400">

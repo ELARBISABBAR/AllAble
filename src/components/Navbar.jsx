@@ -58,7 +58,7 @@ const Navbar = ({ user, onLogout }) => {
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
               <span className="text-2xl font-bold text-purple-600">AllAble</span>
-              <span className="ml-2 text-lg text-gray-700">AllAble</span>
+              {/* <span className="ml-2 text-lg text-gray-700">AllAble</span> */}
             </div>
           </div>
 

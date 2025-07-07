@@ -12,6 +12,7 @@ import CommunityPage from './components/CommunityPage';
 import DirectoryPage from './components/DirectoryPage';
 import ExtensionPage from './components/ExtensionPage';
 import './App.css';
+import Setting from './components/Setting';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -142,6 +143,14 @@ const App = () => {
             element={
               isAuthenticated ?
                 <ExtensionPage /> :
+                <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              isAuthenticated ?
+                <Setting/> :
                 <Navigate to="/login" replace />
             }
           />
