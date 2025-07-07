@@ -1,0 +1,699 @@
+/* AllAble Extension - Clean, Accessible Styles */
+
+/* Enhanced Floating Panel */
+.allable-floating-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 240px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid #dee2e6;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.allable-floating-panel:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.allable-floating-panel.minimized .allable-panel-content {
+  display: none;
+}
+
+.allable-panel-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.allable-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.allable-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.allable-title {
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.allable-header-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.allable-header-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.allable-header-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.allable-panel-content {
+  padding: 16px;
+}
+
+.allable-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.allable-status-text {
+  color: #495057;
+}
+
+.allable-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #28a745;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+.allable-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.allable-tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 11px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.allable-tool-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.allable-tool-btn:hover::before {
+  left: 100%;
+}
+
+.allable-tool-btn:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.allable-tool-btn:active {
+  transform: translateY(0);
+}
+
+.allable-tool-btn.active {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border-color: #28a745;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.tool-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+.tool-label {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tool-status {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.tool-status[data-status="on"] {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.tool-status[data-status="off"] {
+  background: rgba(108, 117, 125, 0.2);
+  color: #6c757d;
+}
+
+.allable-quick-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.allable-action-btn {
+  flex: 1;
+  padding: 10px;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allable-action-btn:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sign Language Overlay */
+.allable-sign-overlay {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 250px;
+  background: #ffffff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  z-index: 9999;
+  display: none;
+}
+
+.allable-sign-overlay.active {
+  display: block;
+}
+
+.allable-sign-avatar {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-figure {
+  font-size: 48px;
+  margin-bottom: 8px;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes signing {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.sign-text {
+  font-size: 12px;
+  font-weight: bold;
+  min-height: 20px;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.allable-subtitles {
+  padding: 12px;
+  min-height: 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.subtitles-content {
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+  min-height: 40px;
+  font-size: 12px;
+}
+
+.allable-sign-controls {
+  padding: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.allable-sign-controls button {
+  flex: 1;
+  padding: 6px 8px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.allable-sign-controls button:hover {
+  background: #f0f0f0;
+}
+
+/* Video Subtitles */
+.allable-video-subtitles {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Motor Assistance - Large Buttons */
+.allable-large-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 9998;
+}
+
+.allable-large-btn {
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.allable-large-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.allable-large-btn:focus {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+.allable-large-btn:active {
+  transform: scale(0.95);
+}
+
+/* Enhanced Clickable Elements */
+.allable-enhanced {
+  transition: all 0.2s ease !important;
+}
+
+.allable-enhanced:focus {
+  transform: scale(1.02) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Feedback Messages */
+.allable-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #000000;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  z-index: 10001;
+  font-size: 14px;
+  font-weight: bold;
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  20%, 80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Facile Mode Styles */
+.allable-facile-mode {
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.allable-facile-mode * {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.allable-facile-mode p {
+  margin-bottom: 16px !important;
+  max-width: 600px !important;
+}
+
+.allable-facile-mode h1, 
+.allable-facile-mode h2, 
+.allable-facile-mode h3 {
+  font-weight: bold !important;
+  margin: 20px 0 12px 0 !important;
+}
+
+.allable-facile-simplified {
+  background: #f9f9f9 !important;
+  padding: 16px !important;
+  border-left: 4px solid #000 !important;
+  margin: 12px 0 !important;
+}
+
+/* High Contrast Mode */
+.allable-high-contrast {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.allable-high-contrast * {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.allable-high-contrast a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+.allable-high-contrast button {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+/* Quick Tools */
+.allable-quick-tools {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 9997;
+}
+
+.allable-quick-tool {
+  padding: 12px;
+  background: #ffffff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px;
+  transition: all 0.2s ease;
+}
+
+.allable-quick-tool:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Accessibility Enhancements */
+.allable-focus-visible {
+  outline: 3px solid #000 !important;
+  outline-offset: 2px !important;
+}
+
+.allable-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 10002;
+}
+
+.allable-skip-link:focus {
+  top: 0;
+}
+
+/* Additional Animations */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Glossary Terms */
+.allable-glossary-term {
+  border-bottom: 2px dotted #000;
+  cursor: help;
+  position: relative;
+}
+
+.allable-glossary-term:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10000;
+  animation: fadeInOut 0.3s ease-in;
+}
+
+/* Visual Aids */
+.allable-visual-aid {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.allable-link-aid {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* Reading Mode Enhancements */
+.allable-reading-mode {
+  animation: slideIn 0.3s ease-out;
+}
+
+.allable-reading-mode * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Focus Enhancements */
+.allable-focus-ring {
+  outline: 3px solid #000 !important;
+  outline-offset: 2px !important;
+  animation: pulse 1s infinite;
+}
+
+/* Loading States */
+.allable-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.allable-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Error States */
+.allable-error {
+  border: 2px solid #ff0000 !important;
+  background: #ffe6e6 !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Success States */
+.allable-success {
+  border: 2px solid #00ff00 !important;
+  background: #e6ffe6 !important;
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .allable-floating-panel {
+    width: 160px;
+    right: 10px;
+    top: 10px;
+  }
+
+  .allable-sign-overlay {
+    width: 200px;
+    left: 10px;
+  }
+
+  .allable-large-buttons {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .allable-large-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .allable-quick-tools {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .allable-quick-tool {
+    min-width: 60px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .allable-floating-panel {
+    width: 140px;
+    font-size: 12px;
+  }
+
+  .allable-tool-btn {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .allable-sign-overlay {
+    width: 180px;
+  }
+
+  .allable-large-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .allable-floating-panel,
+  .allable-sign-overlay,
+  .allable-large-buttons,
+  .allable-quick-tools,
+  .allable-feedback {
+    display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

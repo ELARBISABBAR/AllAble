@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AllAble Learning Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #000;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .lesson-card {
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 20px;
+      background: #f9f9f9;
+      transition: transform 0.2s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .lesson-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    .lesson-card .difficulty {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #000;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card .difficulty.beginner {
+      background: #28a745;
+    }
+
+    .lesson-card .difficulty.intermediate {
+      background: #ffc107;
+      color: #000;
+    }
+
+    .lesson-card .difficulty.advanced {
+      background: #dc3545;
+    }
+
+    .lesson-card button {
+      width: 100%;
+      padding: 10px;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .lesson-card button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .forum-section {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .forum-section h3 {
+      margin-bottom: 15px;
+    }
+
+    .forum-topics {
+      list-style: none;
+    }
+
+    .forum-topics li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .forum-topics li:hover {
+      background: #e9e9e9;
+    }
+
+    .forum-topics li:last-child {
+      border-bottom: none;
+    }
+
+    .quick-tips {
+      background: #e8f4f8;
+      padding: 20px;
+      border-left: 4px solid #000;
+      margin: 20px 0;
+    }
+
+    .quick-tips h3 {
+      margin-bottom: 10px;
+    }
+
+    .quick-tips ul {
+      list-style-position: inside;
+    }
+
+    .quick-tips li {
+      margin-bottom: 8px;
+    }
+
+    .accessibility-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .accessibility-controls h4 {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .accessibility-controls button {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .accessibility-controls button:hover {
+      background: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .accessibility-controls {
+        position: static;
+        margin-bottom: 20px;
+      }
+      
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="accessibility-controls">
+    <h4>Accessibility</h4>
+    <button onclick="toggleHighContrast()">High Contrast</button>
+    <button onclick="increaseFontSize()">Larger Text</button>
+    <button onclick="readPage()">Read Page</button>
+    <button onclick="simplifyPage()">Simplify</button>
+  </div>
+
+  <div class="header">
+    <h1>AllAble Learning Hub</h1>
+    <p>Learn new skills in accessible, bite-sized lessons</p>
+  </div>
+
+  <div class="quick-tips">
+    <h3>💡 Quick Accessibility Tips</h3>
+    <ul>
+      <li>Use keyboard shortcuts: Tab to navigate, Enter to select</li>
+      <li>Enable voice reader to have content read aloud</li>
+      <li>Try Facile Mode to simplify complex pages</li>
+      <li>Use motor assistance for voice-controlled navigation</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🎓 Skill Building Lessons</h2>
+    
+    <div class="lesson-grid">
+      <div class="lesson-card">
+        <div class="difficulty beginner">Beginner</div>
+        <h3>Basic Computer Navigation</h3>
+        <p>Learn how to navigate websites using keyboard shortcuts and accessibility tools.</p>
+        <button onclick="startLesson('basic-navigation')">Start Lesson</button>
+      </div>
+
+      <div class="lesson-card">
+        <div class="difficulty beginner">Beginner</div>
+        <h3>Using Screen Readers</h3>
+        <p>Understand how screen readers work and how to use them effectively.</p>
+        <button onclick="startLesson('screen-readers')">Start Lesson</button>
+      </div>
+
+      <div class="lesson-card">
+        <div class="difficulty intermediate">Intermediate</div>
+        <h3>Voice Commands</h3>
+        <p>Master voice control for hands-free computer interaction.</p>
+        <button onclick="startLesson('voice-commands')">Start Lesson</button>
+      </div>
+
+      <div class="lesson-card">
+        <div class="difficulty beginner">Beginner</div>
+        <h3>Online Safety</h3>
+        <p>Stay safe online with accessible security practices.</p>
+        <button onclick="startLesson('online-safety')">Start Lesson</button>
+      </div>
+
+      <div class="lesson-card">
+        <div class="difficulty intermediate">Intermediate</div>
+        <h3>Digital Communication</h3>
+        <p>Learn to use email, messaging, and video calls accessibly.</p>
+        <button onclick="startLesson('digital-communication')">Start Lesson</button>
+      </div>
+
+      <div class="lesson-card">
+        <div class="difficulty advanced">Advanced</div>
+        <h3>Customizing Accessibility</h3>
+        <p>Advanced techniques for personalizing your accessibility setup.</p>
+        <button onclick="startLesson('customizing-accessibility')">Start Lesson</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💬 Community Forum</h2>
+    <div class="forum-section">
+      <h3>Recent Discussions</h3>
+      <ul class="forum-topics">
+        <li onclick="openTopic('getting-started')">
+          <strong>Getting Started with AllAble</strong><br>
+          <small>Tips and tricks for new users - 12 replies</small>
+        </li>
+        <li onclick="openTopic('voice-control')">
+          <strong>Voice Control Best Practices</strong><br>
+          <small>Share your voice command setups - 8 replies</small>
+        </li>
+        <li onclick="openTopic('mobile-accessibility')">
+          <strong>Mobile Accessibility Tips</strong><br>
+          <small>Making smartphones more accessible - 15 replies</small>
+        </li>
+        <li onclick="openTopic('success-stories')">
+          <strong>Success Stories</strong><br>
+          <small>Share how AllAble has helped you - 23 replies</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📚 Resources</h2>
+    <div class="lesson-grid">
+      <div class="lesson-card">
+        <h3>Accessibility Guidelines</h3>
+        <p>Learn about WCAG guidelines and web accessibility standards.</p>
+        <button onclick="openResource('guidelines')">View Resource</button>
+      </div>
+
+      <div class="lesson-card">
+        <h3>Assistive Technology Guide</h3>
+        <p>Comprehensive guide to assistive technologies and tools.</p>
+        <button onclick="openResource('assistive-tech')">View Resource</button>
+      </div>
+
+      <div class="lesson-card">
+        <h3>Keyboard Shortcuts Reference</h3>
+        <p>Complete list of keyboard shortcuts for better navigation.</p>
+        <button onclick="openResource('shortcuts')">View Resource</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleHighContrast() {
+      document.body.classList.toggle('high-contrast');
+      if (document.body.classList.contains('high-contrast')) {
+        document.body.style.background = '#000';
+        document.body.style.color = '#fff';
+      } else {
+        document.body.style.background = '#fff';
+        document.body.style.color = '#000';
+      }
+    }
+
+    function increaseFontSize() {
+      const currentSize = parseInt(window.getComputedStyle(document.body).fontSize);
+      document.body.style.fontSize = (currentSize + 2) + 'px';
+    }
+
+    function readPage() {
+      if ('speechSynthesis' in window) {
+        const text = document.body.textContent;
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+      }
+    }
+
+    function simplifyPage() {
+      document.body.classList.toggle('simplified');
+      if (document.body.classList.contains('simplified')) {
+        document.body.style.fontSize = '18px';
+        document.body.style.lineHeight = '1.8';
+      }
+    }
+
+    function startLesson(lessonId) {
+      alert(`Starting lesson: ${lessonId}. In a full implementation, this would open an interactive lesson.`);
+    }
+
+    function openTopic(topicId) {
+      alert(`Opening forum topic: ${topicId}. In a full implementation, this would open the forum discussion.`);
+    }
+
+    function openResource(resourceId) {
+      alert(`Opening resource: ${resourceId}. In a full implementation, this would open the resource page.`);
+    }
+  </script>
+</body>
+</html>

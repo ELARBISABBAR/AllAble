@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AllAble Settings</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 380px;
+      min-height: 500px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: #212529;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin: -16px -16px 20px -16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .header p {
+      font-size: 13px;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .header .version {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 10px;
+      opacity: 0.7;
+      background: rgba(255,255,255,0.2);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    .container {
+      padding: 0 16px 16px 16px;
+    }
+
+    .section {
+      background: white;
+      margin-bottom: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+    }
+
+    .section:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transform: translateY(-1px);
+    }
+
+    .section h3 {
+      margin: 0 0 16px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #495057;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h3::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 2px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      transition: all 0.2s ease;
+    }
+
+    .setting-item:hover {
+      background: #e9ecef;
+      border-color: #dee2e6;
+    }
+
+    .setting-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .setting-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #495057;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      background: #ced4da;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .toggle-switch:hover {
+      background: #adb5bd;
+    }
+
+    .toggle-switch.active {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .toggle-switch.active::after {
+      transform: translateX(24px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .slider {
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    .select {
+      width: 100%;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: white;
+      font-size: 12px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px 16px;
+      background: white;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #495057;
+    }
+
+    .button:hover {
+      background: #f8f9fa;
+      border-color: #adb5bd;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .button:focus {
+      outline: 2px solid #667eea;
+      outline-offset: 2px;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .button.primary:hover {
+      background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .button.danger {
+      background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .button.danger:hover {
+      background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .status-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .status-indicator.active {
+      background: #00ff00;
+    }
+
+    .status-indicator.inactive {
+      background: #ff0000;
+    }
+
+    .status-bar {
+      background: #f8f9fa;
+      margin: 16px -16px -16px -16px;
+      padding: 12px 16px;
+      border-top: 1px solid #dee2e6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #28a745;
+      animation: pulse-dot 2s infinite;
+    }
+
+    .status-dot.error {
+      background: #dc3545;
+    }
+
+    .status-dot.warning {
+      background: #ffc107;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .help-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .notification {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #28a745;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 1000;
+      animation: slideInNotification 0.3s ease-out;
+    }
+
+    .notification.error {
+      background: #dc3545;
+    }
+
+    .notification.warning {
+      background: #ffc107;
+      color: #212529;
+    }
+
+    @keyframes slideInNotification {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
+      position: relative;
+    }
+
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="version">v1.0</div>
+    <h1>AllAble</h1>
+    <p>Making the web accessible for everyone</p>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <h3>🔧 Core Features</h3>
+
+      <div class="setting-item">
+        <span class="setting-label">
+          <span class="feature-icon">🔊</span>
+          <span>
+            Voice Reader
+            <div style="font-size: 11px; color: #6c757d; font-weight: 400;">Text-to-speech & voice commands</div>
+          </span>
+        </span>
+        <div class="toggle-switch" id="voice-toggle" title="Toggle Voice Reader"></div>
+      </div>
+
+      <div class="setting-item">
+        <span class="setting-label">
+          <span class="feature-icon">🤟</span>
+          <span>
+            Sign Language
+            <div style="font-size: 11px; color: #6c757d; font-weight: 400;">Avatar & live subtitles</div>
+          </span>
+        </span>
+        <div class="toggle-switch" id="sign-toggle" title="Toggle Sign Language"></div>
+      </div>
+
+      <div class="setting-item">
+        <span class="setting-label">
+          <span class="feature-icon">🖱️</span>
+          <span>
+            Motor Assistance
+            <div style="font-size: 11px; color: #6c757d; font-weight: 400;">Voice control & large buttons</div>
+          </span>
+        </span>
+        <div class="toggle-switch" id="motor-toggle" title="Toggle Motor Assistance"></div>
+      </div>
+
+      <div class="setting-item">
+        <span class="setting-label">
+          <span class="feature-icon">🧠</span>
+          <span>
+            Facile Mode
+            <div style="font-size: 11px; color: #6c757d; font-weight: 400;">Simplified content & visual aids</div>
+          </span>
+        </span>
+        <div class="toggle-switch" id="facile-toggle" title="Toggle Facile Mode"></div>
+      </div>
+    </div>
+
+  <div class="section">
+    <h3>Voice Settings</h3>
+    
+    <div class="setting-item">
+      <span class="setting-label">Speech Speed</span>
+    </div>
+    <input type="range" class="slider" id="speech-speed" min="0.5" max="2" step="0.1" value="1">
+    
+    <div class="setting-item">
+      <span class="setting-label">Voice</span>
+    </div>
+    <select class="select" id="voice-select">
+      <option value="default">Default</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <h3>Display Settings</h3>
+    
+    <div class="setting-item">
+      <span class="setting-label">High Contrast</span>
+      <div class="toggle-switch" id="contrast-toggle"></div>
+    </div>
+    
+    <div class="setting-item">
+      <span class="setting-label">Font Size</span>
+    </div>
+    <select class="select" id="font-size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+      <option value="extra-large">Extra Large</option>
+    </select>
+  </div>
+
+    <div class="section">
+      <h3>⚡ Quick Actions</h3>
+      <div class="quick-actions">
+        <button class="button" id="read-page">
+          <span>📖</span> Read Page
+        </button>
+        <button class="button" id="simplify-page">
+          <span>🧠</span> Simplify
+        </button>
+        <button class="button" id="emergency-contact">
+          <span>🚨</span> Emergency
+        </button>
+        <button class="button" id="learning-hub">
+          <span>🎓</span> Learn
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <button class="button primary" id="save-settings">
+        <span>💾</span> Save Settings
+      </button>
+      <button class="button danger" id="reset-settings">
+        <span>🔄</span> Reset to Default
+      </button>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-item">
+        <span class="status-dot" id="extension-status"></span>
+        <span id="status-text">Ready</span>
+      </div>
+      <div class="help-link">
+        <button class="button" id="help-button" style="margin: 0; padding: 6px 12px; font-size: 11px;">
+          <span>❓</span> Help
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AllAble Extension Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .content-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    
+    .complex-text {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .test-button {
+      padding: 10px 20px;
+      background: #007cba;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .test-button:hover {
+      background: #005a87;
+    }
+    
+    .image-section {
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .test-image {
+      max-width: 300px;
+      height: 200px;
+      background: #e0e0e0;
+      display: inline-block;
+      line-height: 200px;
+      text-align: center;
+      border: 2px solid #ccc;
+      margin: 10px;
+    }
+    
+    .video-section {
+      margin: 30px 0;
+    }
+    
+    .test-video {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      background: #000;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .form-section {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .accessibility-test {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+    
+    .small-text {
+      font-size: 10px;
+      color: #666;
+    }
+    
+    .large-text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .navigation-menu {
+      background: #333;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+    
+    .navigation-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: inline-block;
+    }
+    
+    .navigation-menu a:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>AllAble Extension Test Page</h1>
+    <p>This page contains various elements to test AllAble accessibility features</p>
+  </div>
+
+  <nav class="navigation-menu">
+    <a href="#section1">Section 1</a>
+    <a href="#section2">Section 2</a>
+    <a href="#section3">Section 3</a>
+    <a href="#forms">Forms</a>
+    <a href="#media">Media</a>
+  </nav>
+
+  <div class="accessibility-test">
+    <h3>🧪 Testing Instructions</h3>
+    <p>Install the AllAble extension and try these features:</p>
+    <ul>
+      <li><strong>Voice Reader:</strong> Select any text to hear it read aloud</li>
+      <li><strong>Facile Mode:</strong> Use Ctrl+Shift+F to simplify this page</li>
+      <li><strong>Motor Assistance:</strong> Try voice commands like "scroll down" or "click button"</li>
+      <li><strong>Quick Tools:</strong> Use the floating tools to extract text from images</li>
+    </ul>
+  </div>
+
+  <section id="section1" class="content-section">
+    <h2>Complex Text Section</h2>
+    <div class="complex-text">
+      <p>This section contains deliberately complex text to demonstrate the Facile Mode functionality. The utilization of sophisticated vocabulary and convoluted sentence structures serves to illustrate how the extension can simplify content for enhanced comprehension. Furthermore, this demonstrates the capability of the system to transform verbose explanations into more accessible formats.</p>
+      
+      <p>Subsequently, we can observe how the API integration facilitates the transformation of technical jargon into user-friendly language. The implementation leverages advanced algorithms to identify complex terminology and provide simplified alternatives.</p>
+      
+      <p>Moreover, the system incorporates glossary functionality to provide contextual definitions for technical terms such as API, URL, and browser navigation concepts.</p>
+    </div>
+  </section>
+
+  <section id="section2" class="content-section">
+    <h2>Interactive Elements</h2>
+    <div class="button-group">
+      <button class="test-button" onclick="alert('Button 1 clicked!')">Primary Action</button>
+      <button class="test-button" onclick="alert('Button 2 clicked!')">Secondary Action</button>
+      <button class="test-button" onclick="alert('Button 3 clicked!')">Tertiary Action</button>
+      <button class="test-button" onclick="window.scrollTo(0, 0)">Scroll to Top</button>
+      <button class="test-button" onclick="window.history.back()">Go Back</button>
+    </div>
+    
+    <p>These buttons test the motor assistance voice control features. Try saying commands like:</p>
+    <ul>
+      <li>"Click Primary Action"</li>
+      <li>"Click Scroll to Top"</li>
+      <li>"Scroll down"</li>
+      <li>"Go back"</li>
+    </ul>
+  </section>
+
+  <section id="media" class="content-section">
+    <h2>Media Elements</h2>
+    
+    <div class="image-section">
+      <h3>Test Images (for OCR)</h3>
+      <div class="test-image" alt="Sample image with text: Hello World">
+        📷 Sample Image 1<br>
+        <small>(Contains text: "Hello World")</small>
+      </div>
+      <div class="test-image" alt="Another test image with text: AllAble Extension">
+        📷 Sample Image 2<br>
+        <small>(Contains text: "AllAble Extension")</small>
+      </div>
+    </div>
+    
+    <div class="video-section">
+      <h3>Video Element (for Subtitles)</h3>
+      <div class="test-video" style="display: flex; align-items: center; justify-content: center; color: white;">
+        📹 Sample Video<br>
+        <small>(Subtitles would appear here)</small>
+      </div>
+      <p><em>In a real implementation, this would be an actual video element with subtitle generation.</em></p>
+    </div>
+  </section>
+
+  <section id="forms" class="content-section">
+    <h2>Form Elements</h2>
+    <div class="form-section">
+      <h3>Contact Form</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="">Select a subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="feedback">Feedback</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit" class="test-button">Send Message</button>
+          <button type="reset" class="test-button">Clear Form</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="section3" class="content-section">
+    <h2>Typography Tests</h2>
+    <div class="small-text">
+      This is small text that might be difficult to read for users with visual impairments.
+    </div>
+    
+    <p>This is normal paragraph text that should be easily readable.</p>
+    
+    <div class="large-text">
+      This is large text for better visibility.
+    </div>
+    
+    <blockquote style="border-left: 4px solid #ccc; padding-left: 20px; margin: 20px 0; font-style: italic;">
+      "Accessibility is not a feature, it's a fundamental aspect of good design that benefits everyone."
+    </blockquote>
+  </section>
+
+  <section class="content-section">
+    <h2>Keyboard Navigation Test</h2>
+    <p>Use Tab key to navigate through these elements:</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a href="#" tabindex="1">Link 1</a>
+      <button tabindex="2">Button 1</button>
+      <input type="text" placeholder="Input field" tabindex="3">
+      <a href="#" tabindex="4">Link 2</a>
+      <button tabindex="5">Button 2</button>
+      <select tabindex="6">
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+    </div>
+  </section>
+
+  <footer style="margin-top: 50px; padding: 20px; background: #f4f4f4; text-align: center;">
+    <p>AllAble Extension Test Page - Use this page to test all accessibility features</p>
+    <p><small>Try right-clicking on elements to access AllAble context menu options</small></p>
+  </footer>
+
+  <script>
+    // Add some interactive behavior for testing
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Test page loaded - AllAble extension should be active');
+      
+      // Add click handlers for testing
+      document.querySelectorAll('.test-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+          console.log('Button clicked:', e.target.textContent);
+        });
+      });
+      
+      // Test form submission
+      document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Form submitted! (This is just a test)');
+      });
+    });
+  </script>
+</body>
+</html>
