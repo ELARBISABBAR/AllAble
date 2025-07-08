@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaUsers, FaComments, FaCalendar, FaHeart, FaShare, FaStar, FaThumbsUp, FaReply, FaEye, FaUserPlus, FaMapMarkerAlt, FaClock, FaGraduationCap, FaLightbulb, FaHandsHelping, FaCode, FaAccessibleIcon, FaBookOpen, FaVideo, FaChartLine, FaAward, FaBell, FaSearch, FaFilter, FaPlus, FaEllipsisH } from 'react-icons/fa';
+import Footer from './Footer';
 
 // Add custom animations
 const styles = `
@@ -595,9 +596,9 @@ const CommunityPage = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
-
-
   );
 };
 

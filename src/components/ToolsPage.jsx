@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaMicrophone, FaHandPaper, FaEye, FaKeyboard, FaVolumeUp, FaCog } from 'react-icons/fa';
+import Footer from './Footer';
 
 const ToolsPage = () => {
   const tools = [
@@ -147,6 +148,8 @@ const ToolsPage = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

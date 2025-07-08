@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe, FaFilter, FaStar, FaHeart, FaDirections, FaClock, FaWheelchair, FaEye, FaHandsHelping, FaGraduationCap, FaStethoscope, FaBriefcase, FaGamepad, FaHome, FaUsers, FaTools, FaExpand, FaCompress } from 'react-icons/fa';
+import Footer from './Footer';
 
 // Custom animations and styles
 const styles = `
@@ -720,6 +721,8 @@ const DirectoryPage = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

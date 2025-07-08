@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaMicrophone, FaEye, FaHandPaper, FaDesktop, FaPlay, FaChevronDown, FaChevronUp, FaQuestionCircle, FaRocket, FaStar, FaArrowRight } from 'react-icons/fa';
+import Footer from './Footer';
 
 // Add custom animations
 const styles = `
@@ -372,21 +373,7 @@ const InterfacePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-4">AllAble</h3>
-          <p className="text-gray-400 mb-6">Stay updated with AllAble</p>
-          <div className="flex justify-center space-x-6 mb-8">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">© 2024 AllAble</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms</a>
-          </div>
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition-colors">
-            Contact
-          </button>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

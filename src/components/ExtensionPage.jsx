@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaCheck, FaRocket, FaShieldAlt, FaHeadphones, FaEye, FaGraduationCap, FaLanguage, FaBookOpen, FaFlask, FaChrome, FaFirefox, FaEdge, FaGlobe, FaSearch, FaYoutube } from 'react-icons/fa';
+import Footer from './Footer';
 
 // Custom animations and styles
 const styles = `
@@ -391,23 +392,7 @@ const ExtensionPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-bold mb-4">AllAble Inc.</h3>
-          <p className="text-gray-400 mb-6">Rendre Internet plus accessible AllAble</p>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
-            Contact
-          </button>
-          <div className="mt-8 pt-8 border-t border-gray-700">
-            <div className="flex items-center justify-center text-gray-400 text-sm">
-              <span>Made with</span>
-              <span className="mx-2 text-red-500">♥</span>
-              <span className="font-semibold text-blue-400">Visily</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
